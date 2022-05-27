@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 
 public class ConnectionAssistance {
 
-    @Autowired
+
     private final ConnectionManager connectionManager;
-    @Autowired
+
     private final BusStopManager busStopManager;
 
     public ConnectionAssistance(ConnectionManager connectionManager, BusStopManager busStopManager) {

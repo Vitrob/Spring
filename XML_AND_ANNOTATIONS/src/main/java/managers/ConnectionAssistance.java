@@ -1,5 +1,6 @@
 package managers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pattern.ConnectedBusStopsNames;
 
 import java.util.Map;
@@ -8,7 +9,9 @@ import java.util.stream.Collectors;
 
 public class ConnectionAssistance {
 
+    @Autowired
     private final ConnectionManager connectionManager;
+    @Autowired
     private final BusStopManager busStopManager;
 
     public ConnectionAssistance(ConnectionManager connectionManager, BusStopManager busStopManager) {

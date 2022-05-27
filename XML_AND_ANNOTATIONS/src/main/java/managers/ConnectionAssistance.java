@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 
 public class ConnectionAssistance {
 
-
+    @Autowired
     private final ConnectionManager connectionManager;
-
+    @Autowired
     private final BusStopManager busStopManager;
 
     public ConnectionAssistance(ConnectionManager connectionManager, BusStopManager busStopManager) {
@@ -19,12 +19,12 @@ public class ConnectionAssistance {
         this.busStopManager = busStopManager;
     }
 
-    public Set<ConnectedBusStopsNames> getConnections(){
-        Map<String,String> busStopNames = busStopManager.getBusStopNames();
+    public Set<ConnectedBusStopsNames> getConnections() {
+        Map<String, String> busStopNames = busStopManager.getBusStopNames();
         return connectionManager.getConnections().stream()
                 .map(busStop -> ConnectedBusStopsNames.builder()
-                        .startName(busStopNames.getOrDefault(busStop.getStartCode(),busStop.getStartCode()))
-                        .finishName(busStopNames.getOrDefault(busStop.getFinishCode(),busStop.getFinishCode()))
+                        .startName(busStopNames.getOrDefault(busStop.getStartCode(), busStop.getStartCode()))
+                        .finishName(busStopNames.getOrDefault(busStop.getFinishCode(), busStop.getFinishCode()))
                         .build()
                 ).collect(Collectors.toSet());
     }

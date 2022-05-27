@@ -17,11 +17,11 @@ public class ConnectionAssistance {
     }
 
     public Set<ConnectedBusStopsNames> getConnections(){
-        Map<String,String> busStationNames = busStopManager.getBusStopNames();
+        Map<String,String> busStopNames = busStopManager.getBusStopNames();
         return connectionManager.getConnections().stream()
-                .map(street -> ConnectedBusStopsNames.builder()
-                        .startName(busStationNames.getOrDefault(street.getStartCode(),street.getStartCode()))
-                        .finishName(busStationNames.getOrDefault(street.getFinishCode(),street.getFinishCode()))
+                .map(busStop -> ConnectedBusStopsNames.builder()
+                        .startName(busStopNames.getOrDefault(busStop.getStartCode(),busStop.getStartCode()))
+                        .finishName(busStopNames.getOrDefault(busStop.getFinishCode(),busStop.getFinishCode()))
                         .build()
                 ).collect(Collectors.toSet());
     }
